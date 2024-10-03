@@ -27,11 +27,11 @@ def mat44_to_transform(mat: npt.NDArray[numpy.float32]) -> prd.RigidTransformati
 
 
 def coordinate_to_homogeneous(coord: prd.Coordinate) -> npt.NDArray[numpy.float32]:
-    return numpy.hstack([coord.c, 1])
+    return numpy.hstack([coord, 1])
 
 
 def homogeneous_to_coordinate(hom_coord: npt.NDArray[numpy.float32]) -> prd.Coordinate:
-    return prd.Coordinate(c=hom_coord[0:3])
+    return hom_coord[0:3]
 
 
 def mult_transforms(
@@ -69,7 +69,7 @@ def transform_BoxShape(
 
 
 def draw_BoxShape(ax, box: prd.BoxShape) -> None:
-    coords = numpy.array([c.c for c in box.corners])
+    coords = numpy.array([c for c in box.corners])
     # mpl_toolkits.mplot3d.art3d.Line3D(coords[:, 0], coords[:, 1], coords[:, 2])
     ax.plot3D(coords[:, 0], coords[:, 1], coords[:, 2])
 

@@ -27,14 +27,14 @@ def get_crystal() -> prd.SolidVolume:
     """return a cuboid volume"""
     crystal_shape = prd.BoxShape(
         corners=[
-            prd.Coordinate(c=(0, 0, 0)),
-            prd.Coordinate(c=(0, 0, CRYSTAL_LENGTH[2])),
-            prd.Coordinate(c=(0, CRYSTAL_LENGTH[1], CRYSTAL_LENGTH[2])),
-            prd.Coordinate(c=(0, CRYSTAL_LENGTH[1], 0)),
-            prd.Coordinate(c=(CRYSTAL_LENGTH[0], 0, 0)),
-            prd.Coordinate(c=(CRYSTAL_LENGTH[0], 0, CRYSTAL_LENGTH[2])),
-            prd.Coordinate(c=(CRYSTAL_LENGTH[0], CRYSTAL_LENGTH[1], CRYSTAL_LENGTH[2])),
-            prd.Coordinate(c=(CRYSTAL_LENGTH[0], CRYSTAL_LENGTH[1], 0)),
+            numpy.array((0, 0, 0), dtype=numpy.float32),
+            numpy.array((0, 0, CRYSTAL_LENGTH[2]), dtype=numpy.float32),
+            numpy.array((0, CRYSTAL_LENGTH[1], CRYSTAL_LENGTH[2]), dtype=numpy.float32),
+            numpy.array((0, CRYSTAL_LENGTH[1], 0), dtype=numpy.float32),
+            numpy.array((CRYSTAL_LENGTH[0], 0, 0), dtype=numpy.float32),
+            numpy.array((CRYSTAL_LENGTH[0], 0, CRYSTAL_LENGTH[2]), dtype=numpy.float32),
+            numpy.array((CRYSTAL_LENGTH[0], CRYSTAL_LENGTH[1], CRYSTAL_LENGTH[2]), dtype=numpy.float32),
+            numpy.array((CRYSTAL_LENGTH[0], CRYSTAL_LENGTH[1], 0), dtype=numpy.float32),
         ]
     )
     return prd.BoxSolidVolume(shape=crystal_shape, material_id=1)
